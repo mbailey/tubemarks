@@ -1,0 +1,17 @@
+<h2><%= @user.login %>'s tubemarks</h2>
+<div id="video_list">
+	<% if not @videos.blank? %>
+		<%= will_paginate @videos %>
+		<% @videos.each do |video| %>
+		  <%= render :partial => 'videos/video_summary', :locals => {:video => video} %>
+		<% end %>
+		<%= will_paginate @videos %>
+	<% end %>
+</div>
+<% content_for(:viewport) do %>
+<% if @videos[0] %>
+  <%= render :partial => 'videos/video', :object => @videos[0] %>
+<% else %>
+There are no videos uploaded yet.
+<% end %>
+<% end %>

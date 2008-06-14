@@ -1,0 +1,20 @@
+sudo gem update rails
+rails tubemarks
+cd tubemarks
+./script/generate video v:string
+rake db:migrate
+./script/server
+
+
+./script/generate migration AddColumnsToVideo title:string thumbnail_url:string length_seconds:integer
+
+...................
+. I, Brodaigh did .
+...................
+I changed 'create video' on fail to render action index instead of new. Is that OK?
+Added some divs around the place.
+Added to style sheet. Mostly fixed widths. The shoe fits. Hope that is OK?
+-Brodaigh
+
+
+

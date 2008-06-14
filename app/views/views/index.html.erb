@@ -1,0 +1,22 @@
+<h1>Listing views</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Video</th>
+  </tr>
+
+<% for view in @views %>
+  <tr>
+    <td><%=h view.user_id %></td>
+    <td><%=h view.video_id %></td>
+    <td><%= link_to 'Show', view %></td>
+    <td><%= link_to 'Edit', edit_view_path(view) %></td>
+    <td><%= link_to 'Destroy', view, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New view', new_view_path %>

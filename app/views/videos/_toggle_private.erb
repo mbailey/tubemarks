@@ -1,0 +1,10 @@
+<%=
+if logged_in? && current_user.is_admin?
+  icon = video.private ? '/images/icons/Glasses-Creature-32x32.png' : '/images/icons/Smile-Creature-32x32.png'
+   link_to_remote image_tag(icon, {:border => 0}), 
+	:url => video_url(video, :video => {:private => ! video.private}),
+	:update => "toggle_private_#{video.id}",
+	:method => :put
+end
+%>
+

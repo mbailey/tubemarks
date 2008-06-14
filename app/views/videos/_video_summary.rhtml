@@ -1,0 +1,14 @@
+<table>
+  <tr>
+	<td>	
+		<div class="thumbs"><%= (link_to_remote image_tag(video.thumbnail_url, :size => "130x97"), :url => video_path(video), :method => :get, :update => 'viewport') unless video.thumbnail_url.blank? %>
+		</div></td>
+	<td><p><big><%= (link_to_remote video.title, :url => video_path(video), :method => :get, :update => 'viewport') unless video.title.blank? %></big></p>
+		<%= fmt_time(video.length_seconds) %> added by: <%= link_to video.adder.login, params.merge('marked_by' => video.adder) if video.adder %><br />
+		<%= video.views.count %> <%= video.views.count == 1 ? 'view' : 'views' %><br />
+		<%= editing_links(video) %>
+		<span id="toggle_private_<%= video.id %>"><%= render :partial => 'toggle_private', :locals => {:video => video} %></span>
+		<%= delete_link(video) %>
+	</td>
+  </tr>
+</table>

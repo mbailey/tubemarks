@@ -1,0 +1,23 @@
+
+<div id="video_list">
+	<div id="filter_panel">
+	<%= render :partial => 'filter_panel' %>
+	</div>
+	
+	<% if not @videos.blank? %>
+		<%= will_paginate @videos %>
+		<% @videos.each do |video| %>
+	<div class="units">
+		 <%= render :partial => 'video_summary', :locals => {:video => video} %>
+	</div>
+		<% end %>
+		<%= will_paginate @videos %>
+	<% end %>
+</div>
+<% content_for(:viewport) do %>
+<% if @videos[0] %>
+  <%= render :partial => 'video', :object => @videos[0] %>
+<% else %>
+There are no videos uploaded yet.
+<% end %>
+<% end %>

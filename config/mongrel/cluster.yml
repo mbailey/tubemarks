@@ -1,0 +1,10 @@
+--- 
+user: mongrel_tubemarks
+group: app_tubemarks
+cwd: /var/www/apps/tubemarks/current
+log_file: /var/www/apps/tubemarks/shared/log/mongrel.log
+port: "8010"
+environment: production
+address: 127.0.0.1
+pid_file: /var/www/apps/tubemarks/shared/pids/mongrel.pid
+servers: 1

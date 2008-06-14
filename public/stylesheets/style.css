@@ -1,0 +1,189 @@
+body { background-color: #fff; color: #333;margin:0; }
+
+body, p, ol, ul, td {
+  font-family:'Lucida Grande',Verdana,Arial,Sans-Serif;  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { text-decoration:underline; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid gray;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  	background-color: #333;
+  	height: 18px;
+  	width: 0%;
+	}
+
+#doobylaka {
+	border-bottom:5px solid #EBECE4;	
+	position:absolute;
+	right:0;
+	width:auto;
+	height:25px;
+	text-align:right;
+	padding:1px 2em 0px 2em;
+	color:lightgrey;
+	}
+#doobylaka a, a:visited { text-decoration:none;color:#696969; }
+#doobylaka img { position:absolute;right:1em;top:11.3em; }
+#header { border-bottom:7px solid pink; }
+#header img { margin:0em 0 0em 1em ; }
+#header img:hover { background-color:none; }
+#form_at_video {
+	background-color:#FFFFF3;
+	padding:.5em .5em .5em 1.4em;
+	border:1px solid pink;
+	}
+#form_at_video p { font-size:110%;margin:4px; }
+#form_at_video input[type="text"] { width:400px;border:1px solid lightgrey; }
+div#video_list { width:500px;position:absolute;left:40em;margin-top:.2em; }
+#video_list .units { border:1px dotted lightgrey;margin:-1px;overflow:auto; }
+#viewport {
+	float:left;
+	margin:1.5em 0 0 1.5em;
+	width:432px;
+	background-color:#FFFFFD;
+	padding:.5em;
+	border:1px solid lightgrey;
+	}
+#viewport h2 { white-space:none;line-height:22px;text-align:center;font-size:16px;margin:1px 0 5px 0;}
+.videos { width:425px;background-color:#EBECE4;padding:2px;border:2px solid lightgrey; }
+.thumbs { width:134px;background-color:#EBECE4;padding:2px;border:2px solid lightgrey; }
+.thumbs a { color:#EBECE4; }
+#bookmark {
+	float:right;
+	width:20em;
+	background-color:none;	
+	padding: .1em 1em;
+	text-align:center;
+	}
+#bookmark p { margin:2.8em 0;line-height:12px;font-size:12px;}
+#bookmark img { margin:6px 0 0 0; }
+#flash_notice {
+	margin:.4em 0 -.9em 1.4em;
+	width:30.8em;
+	background-color:#F0FFF0;
+	padding:.5em;
+	text-align:center;
+	font-size:14px;
+	border:1px solid #00FA9A;
+	color:#2E8B57;
+	}
+div.pagination { padding:3px 0 3px 0;margin:3px 3px 3px 0; }
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #AAAADD;
+	text-decoration: none; 	
+	color: #333;
+	}
+div.pagination a:hover, div.pagination a:active {
+	border: 1px solid #7F7F7F;
+	color: #333;	
+	background-color:#FFFFF3;
+	}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #333;
+	font-weight: bold;
+	background-color:pink;
+	color: #333;
+	}
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #EEE;
+	color: #DDD;
+	}
+#wrapper { overflow:auto; }
+#footer {
+	border-top:1px solid lightgrey;
+	background-color:red;
+	height:3em;
+	}
+#form_at_user { margin:2em; }
+#form_at_user input { border:1px solid lightgrey; }
+#comments {}
+#comments textarea {
+	border:1px solid lightgrey;
+	font-family:'Lucida Grande',Verdana,Arial,Sans-Serif;
+	font-size:16px;
+	}
+#comments .comments { margin:1em;border-bottom:1px solid grey; }
+#comments .comments p.meta { color:grey;text-align:right;margin:0; }
+#comments .button { text-align:right;margin:.5em; }
+div#filter_panel { width:500px;padding:0 0 .6em 0;margin-top:0; }
+div#filter_panel p {
+	color:#000;
+	font-size:14px;
+	border:1px solid pink;
+	background-color:#FFFFF3;
+	padding:2px;
+	}
+span.filter a {
+	color:#000;
+	font-size:16px;
+	text-decoration:underline;
+	background-color:#fff;
+	padding:2px 7px 2px 7px;
+	}
+span.filter { background-color:#F0FFFF;border:1px solid lightgrey;margin:2px;padding:5px; }
+span.space { margin-left:1em;border-left:3px solid pink;padding-left:.5em; }

@@ -1,0 +1,65 @@
+tubemarks TODO
+
+Thursday 24 April
+- bookmarklet icon
+- edit icons (edit, delete)
+- change the base error message from "There were problems with the following fields" - how?
+- add default admin account and first video
+
+
+# add users
+* user home page
+* admin privs
+* signup
+* login
+* password recovery
+* bookmarks saved against user
+* tubemarks unique for user
+
+	def logged_in?
+	def current_user
+	def current_user=(new_user)
+	def authorized?
+	def login_required
+	def access_denied
+	
+	def store_location
+	def redirect_back_or_default(default)
+	
+	def self.included(base)
+	def login_from_session
+	def login_from_basic_auth
+	def login_from_cookie
+
+
+
+# make front page pretty - brodaigh
+* keep it simple - mostly white
+* image for bookmarklet
+* favicon
+
+# setup trac - mike
+
+# setup email notification on commit - mike
+
+# create popup window to view
+
+# ajaxify main page
+
+# seen videos
+* store seen videos in session
+* by default, don't show seen videos (pulldown option :seen, :unseen, :mine, :all)
+
+
+
+# manage videos
+
+	+ = Brodaigh 
+	x = Mike
+	
+	+ network type thingy like twitter as in list of friends, aesthetically speaking?
+	  x i don't follow
+	+ video description?
+	  x yeah, I think we'll let the user add one
+
+

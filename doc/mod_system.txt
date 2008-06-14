@@ -1,0 +1,22 @@
+tubemarks mod system
+====================
+
+The mod system will bring the good stuff to the top and push down the crap.
+
+1. a user can mod any video (1-5)
+2. unmodded videos will be 2.5 by default
+3. a videos mod score will be the average of all mod scores
+4. videos will be listed in order of their mod
+
+5. your friends mod values for a video will be weighted
+the weighting means that even if 90% of people modded a video
+down it will appear higher if your friends liked it (and vice versa).
+
+I don't like guitar hero personally but know a lot of people will like it.
+I should have the option of ignoring their mods if I want.
+
+Yep, you should.
+
+So basically i can go to tubemarks and see the videos my friends are watching. 
+Which are videos I will like ~ cos my friends have similar interests to me.
+Tubemarks knows what videos i like! that's smarter than youtube! :-)

@@ -1,0 +1,15 @@
+<%= link_to 'New video', new_video_path %>
+
+<% form_for(@video) do |f| %>
+  <p>
+    <b>V</b><br />
+    <%= f.text_field :url %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+
+<%= link_to 'add tubemark', bookmarklet() %>
+
+<% end %>

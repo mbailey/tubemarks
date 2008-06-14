@@ -1,0 +1,14 @@
+<!-- Hide the viewport in the main layout -->
+<script>$('viewport').style.display = 'none'</script>
+<div id ="form_at_user">
+<h1>Login</h1>
+<% form_tag session_path do -%>
+<p><label for="login">Login</label><br/>
+<%= text_field_tag 'login' %></p>
+
+<p><label for="password">Password</label><br/>
+<%= password_field_tag 'password' %></p>
+
+<p><%= submit_tag 'Log in' %></p>
+<% end -%>
+</div>

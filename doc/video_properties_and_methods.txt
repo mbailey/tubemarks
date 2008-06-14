@@ -1,0 +1,12 @@
+# properties on video
+video.viewed_by?(user)
+video.viewed_by?(user)
+video.marked_by?(user)
+
+# video methods
+video.add_view(user)
+
+# Search (using has_finder)
+Video.viewed_by(user)
+Video.not_viewed_by(user)
+Video.marked_by(user)

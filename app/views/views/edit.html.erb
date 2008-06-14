@@ -1,0 +1,22 @@
+<h1>Editing view</h1>
+
+<%= error_messages_for :view %>
+
+<% form_for(@view) do |f| %>
+  <p>
+    <b>User</b><br />
+    <%= f.text_field :user_id %>
+  </p>
+
+  <p>
+    <b>Video</b><br />
+    <%= f.text_field :video_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @view %> |
+<%= link_to 'Back', views_path %>
