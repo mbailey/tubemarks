@@ -94,6 +94,13 @@ class UserTest < Test::Unit::TestCase
     assert users(:quentin).remember_token_expires_at.between?(before, after)
   end
 
+  def test_should_generate_forgotten_password_link
+    users(:quentin).remember_me
+    assert User.generate_forgotten_password_link(users(:quentin).email)
+    resulting_user = User.find(users(:quentin).id)
+    assert_not_nil resulting_user.forgotten_password_link
+  end
+
 protected
   def create_user(options = {})
     record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire', :password_confirmation => 'quire' }.merge(options))

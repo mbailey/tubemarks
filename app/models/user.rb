@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
-  
+
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def remember_token?
-    remember_token_expires_at && Time.now.utc < remember_token_expires_at 
+    remember_token_expires_at && Time.now.utc < remember_token_expires_at
   end
 
   # These create and unset the fields required for remembering users between browser closes
@@ -70,23 +70,29 @@ class User < ActiveRecord::Base
   def recently_activated?
     @activated
   end
-  
+
   def is_admin?
     admins = ['mike', 'brodaigh']
     login && admins.include?(login)
   end
 
+  def self.generate_forgotten_password_link(email)
+    user = User.find(:first, :conditions => { :email => email })
+    user.forgotten_password_link = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{user.email}--")
+    user.save!
+  end
+
   protected
-    # before filter 
+    # before filter
     def encrypt_password
       return if password.blank?
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
       self.crypted_password = encrypt(password)
     end
-      
+
     def password_required?
       crypted_password.blank? || !password.blank?
     end
-    
-    
+
+
 end
