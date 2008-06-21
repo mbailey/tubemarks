@@ -7,11 +7,12 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :views
   map.resources :marks
-  
+
   map.resource :session, :controller => 'session'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login  '/login', :controller => 'session', :action => 'new'
   map.logout '/logout', :controller => 'session', :action => 'destroy'
+  map.email_reset_code '/email_reset_code', :controller => 'users', :action => 'email_reset_code' #, :conditions => { :method => 'put'}
 
 
   # The priority is based upon order of creation: first created -> highest priority.

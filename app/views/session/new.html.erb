@@ -11,4 +11,5 @@
 
 <p><%= submit_tag 'Log in' %></p>
 <% end -%>
+<%= link_to "I've forgotten my password", {:controller => "users", :action => 'email_reset_code'} -%>
 </div>

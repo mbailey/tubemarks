@@ -77,9 +77,13 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_forgotten_password_link(email)
-    user = User.find(:first, :conditions => { :email => email })
-    user.forgotten_password_link = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{user.email}--")
-    user.save!
+    user = User.find(:first, :conditions => ["email = ?", email ])
+    if user
+      user.forgotten_password_link = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{user.email}--")
+      user.save!
+      return true
+    end
+    return false
   end
 
   protected

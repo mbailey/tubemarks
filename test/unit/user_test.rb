@@ -95,10 +95,13 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_should_generate_forgotten_password_link
-    users(:quentin).remember_me
     assert User.generate_forgotten_password_link(users(:quentin).email)
     resulting_user = User.find(users(:quentin).id)
     assert_not_nil resulting_user.forgotten_password_link
+  end
+
+  def test_should_not_generate_forgotten_password_link_for_invlaid_email
+    assert_equal false, User.generate_forgotten_password_link("non_existant_email")
   end
 
 protected

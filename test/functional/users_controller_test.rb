@@ -24,6 +24,25 @@ class UsersControllerTest < Test::Unit::TestCase
     end
   end
 
+  def test_should_send_reset_email_to_valid_account
+    create_user
+    put :email_reset_code, :email => 'quire@example.com'
+    assert_response :success
+    assert_equal "We've sent you an email, click the link and reset your password", flash[:notice]
+  end
+
+  def test_should_not_send_reset_email_to_invalid_account
+    put :email_reset_code, :email => 'non-existant@example.com', :form_submission => "true"
+    assert_response :success
+    assert_equal "Who are you?", flash[:notice]
+  end
+
+  def test_should_not_generate_error_message_on_initial_invocation
+    get :email_reset_code
+    assert_response :success
+    assert_equal nil, flash[:notice]
+  end
+
   def test_should_require_login_on_signup
     assert_no_difference 'User.count' do
       create_user(:login => nil)
@@ -55,9 +74,9 @@ class UsersControllerTest < Test::Unit::TestCase
       assert_response :success
     end
   end
-  
 
-  
+
+
 
   protected
     def create_user(options = {})
