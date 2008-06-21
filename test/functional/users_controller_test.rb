@@ -26,9 +26,13 @@ class UsersControllerTest < Test::Unit::TestCase
 
   def test_should_send_reset_email_to_valid_account
     create_user
+    @emails = ActionMailer::Base.deliveries
+    @emails.clear
     put :email_reset_code, :email => 'quire@example.com'
     assert_response :success
     assert_equal "We've sent you an email, click the link and reset your password", flash[:notice]
+    assert @emails.size > 0
+    puts @emails.first.body.inspect
   end
 
   def test_should_not_send_reset_email_to_invalid_account

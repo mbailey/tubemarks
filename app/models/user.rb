@@ -81,9 +81,9 @@ class User < ActiveRecord::Base
     if user
       user.forgotten_password_link = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{user.email}--")
       user.save!
-      return true
+      return user
     end
-    return false
+    return nil
   end
 
   protected

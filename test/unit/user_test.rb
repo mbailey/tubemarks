@@ -101,7 +101,7 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_should_not_generate_forgotten_password_link_for_invlaid_email
-    assert_equal false, User.generate_forgotten_password_link("non_existant_email")
+    assert_equal nil, User.generate_forgotten_password_link("non_existant_email")
   end
 
 protected

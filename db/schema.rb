@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of ActiveRecord to incrementally modify your database, and
+# please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
 # Note that this schema.rb definition is the authoritative source for your database schema. If you need
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 20080620130031) do
 
   create_table "marks", :force => true do |t|
     t.integer  "video_id"
@@ -30,7 +30,11 @@ ActiveRecord::Schema.define(:version => 9) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+    t.string   "forgotten_password_link"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["forgotten_password_link"], :name => "index_users_on_forgotten_password_link"
 
   create_table "videos", :force => true do |t|
     t.string   "v"
@@ -41,7 +45,7 @@ ActiveRecord::Schema.define(:version => 9) do
     t.integer  "length_seconds"
     t.integer  "user_id"
     t.integer  "adder"
-    t.boolean  "private"
+    t.boolean  "private",        :default => false
   end
 
   create_table "views", :force => true do |t|

@@ -31,8 +31,9 @@ class UsersController < ApplicationController
   end
 
   def email_reset_code
-    success = User.generate_forgotten_password_link(params[:email])
-    if success
+    user = User.generate_forgotten_password_link(params[:email])
+    if user
+      UserMailer.deliver_reset_password(url_for(:controller => 'users', :action => 'reset_password'), user)
       flash[:notice] = "We've sent you an email, click the link and reset your password"
     else
       flash[:notice] = "Who are you?" if request.put?
