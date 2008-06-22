@@ -86,6 +86,22 @@ class User < ActiveRecord::Base
     return nil
   end
 
+  def self.reset_password_through_link(link, new_password, new_password_confirmation)
+    users = User.find(:all, :conditions => ["forgotten_password_link = ?", link])
+    raise "Whoa sailor, something's not right here" if users.size > 1
+    if users.size > 0
+      user = users.first
+      user.password = new_password
+      user.password_confirmation = new_password_confirmation
+      user.save!
+      user.forgotten_password_link = nil # we know its all OK so we stop the link being used again.
+      user.save!
+      return user
+    else
+      return nil
+    end
+  end
+
   protected
     # before filter
     def encrypt_password
