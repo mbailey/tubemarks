@@ -28,8 +28,6 @@ class UsersController < ApplicationController
   end
 
   def reset_password
-#     update through link
-
     if params[:link]
       @link = params[:link]
       if (params[:password]  && params[:password_confirmation]) && (params[:password] == params[:password_confirmation])
