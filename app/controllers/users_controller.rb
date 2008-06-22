@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     if params[:link]
       @link = params[:link]
       if (params[:password]  && params[:password_confirmation]) && (params[:password] == params[:password_confirmation])
-        puts "OK"
         user = User.reset_password_through_link(params[:link],params[:password],params[:password_confirmation])
         if user
           self.current_user = User.authenticate(user.login, params[:password])
