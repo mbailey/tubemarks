@@ -28,6 +28,25 @@ class UsersController < ApplicationController
   end
 
   def reset_password
+#     update through link
+
+    if params[:link]
+      @link = params[:link]
+      if (params[:password]  && params[:password_confirmation]) && (params[:password] == params[:password_confirmation])
+        puts "OK"
+        user = User.reset_password_through_link(params[:link],params[:password],params[:password_confirmation])
+        if user
+          self.current_user = User.authenticate(user.login, params[:password])
+          flash.now[:notice] = "Password changed successfully"
+        else
+          flash.now[:notice] = "We can't find that reset code...try again with a different link"
+        end
+      else
+        flash.now[:notice] = "Your password must be entered twice and both entries must match"
+      end
+    else
+      redirect_to '/'
+    end
   end
 
   def email_reset_code

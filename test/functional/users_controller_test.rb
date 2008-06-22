@@ -32,7 +32,6 @@ class UsersControllerTest < Test::Unit::TestCase
     assert_response :success
     assert_equal "We've sent you an email, click the link and reset your password", flash[:notice]
     assert @emails.size > 0
-    puts @emails.first.body.inspect
   end
 
   def test_should_not_send_reset_email_to_invalid_account
@@ -45,6 +44,56 @@ class UsersControllerTest < Test::Unit::TestCase
     get :email_reset_code
     assert_response :success
     assert_equal nil, flash[:notice]
+  end
+
+  def test_reset_password_with_a_valid_link_and_a_good_password
+    create_user
+    put :email_reset_code, :email => 'quire@example.com'
+    user = User.find(:first, :conditions => ["email = ?",'quire@example.com'])
+    get :reset_password, :link => user.forgotten_password_link, :password_confirmation => "test", :password => "test"
+    assert_response :success
+    assert 'test', assigns(:link)
+    assert_equal "Password changed successfully", flash[:notice]
+  end
+
+  def test_reset_password_with_an_invalid_link_and_a_good_password
+    get :reset_password, :link => 'test', :password_confirmation => "test", :password => "test"
+    assert_response :success
+    assert 'test', assigns(:link)
+    assert_equal "We can't find that reset code...try again with a different link", flash[:notice]
+  end
+
+
+  def test_reset_password_with_a_valid_link_and_passwords_that_do_not_match
+    get :reset_password, :link => 'test', :password_confirmation => "test", :password => "test1"
+    assert_response :success
+    assert 'test', assigns(:link)
+    assert_equal "Your password must be entered twice and both entries must match", flash[:notice]
+  end
+
+  def test_reset_password_with_a_valid_link_and_a_confirmation_but_no_password
+    get :reset_password, :link => 'test', :password_confirmation => "test"
+    assert_response :success
+    assert 'test', assigns(:link)
+    assert_equal "Your password must be entered twice and both entries must match", flash[:notice]
+  end
+
+  def test_reset_password_with_a_valid_link_and_a_password_but_no_confirmation
+    get :reset_password, :link => 'test', :password => "test"
+    assert_response :success
+    assert 'test', assigns(:link)
+    assert_equal "Your password must be entered twice and both entries must match", flash[:notice]
+  end
+
+  def test_reset_password_with_a_valid_link_but_no_password
+    get :reset_password, :link => 'test'
+    assert_response :success
+    assert 'test', assigns(:link)
+  end
+
+  def test_reset_password_without_a_valid_link
+    get :reset_password
+    assert_redirected_to '/'
   end
 
   def test_should_require_login_on_signup

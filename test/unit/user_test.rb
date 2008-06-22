@@ -59,13 +59,13 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_should_raise_an_error_for_a_duplicate_link
+    user1 = create_user :login => "duff_one", :email => "duff@one.com"
+    user2 = create_user :login => "duff_two", :email => "duff@two.com"
+    user1.forgotten_password_link = 'duplicate'
+    user2.forgotten_password_link = 'duplicate'
+    user1.save!
+    user2.save!
     assert_raise RuntimeError do
-      user1 = create_user :login => "duff_one", :email => "duff@one.com"
-      user2 = create_user :login => "duff_two", :email => "duff@two.com"
-      user1.forgotten_password_link = 'duplicate'
-      user2.forgotten_password_link = 'duplicate'
-      user1.save!
-      user2.save!
       User.reset_password_through_link('duplicate','test','test')
     end
   end
