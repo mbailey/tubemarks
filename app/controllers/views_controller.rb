@@ -40,7 +40,7 @@ class ViewsController < ApplicationController
   # POST /views
   # POST /views.xml
   def create
-    @view = View.new(:video_id = params[:video], :user_id = current_user)
+    @view = View.new(:video_id => params[:video], :user_id => current_user)
 
     respond_to do |format|
       if @view.save
