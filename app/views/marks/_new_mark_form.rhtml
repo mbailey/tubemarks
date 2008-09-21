@@ -3,13 +3,13 @@
   <% form_remote_tag(:url => marks_path, :method => :post) do %>
   <h2>YouTube Video URL</h2>
 	<p>Copy the url of your fav Vids here.</p>
-	  <%= text_field_tag :url %><p><%= submit_tag "Mark & share" %></p>
+	  <%= text_field_tag :url %><p><%= submit_tag "Mark & Share" %></p>
 	<% end %>
 <% else %>
   <% form_tag(:url => marks_path, :method => :post) do %>
 	  <h2>YouTube Video URL</h2>
 		<p>Copy the url of your fav Vids here.</p>
-	  <%= text_field_tag :url %><p><%= submit_tag "Mark & share" %></p>
+	  <%= text_field_tag :url %><p><%= submit_tag "Mark & Share" %></p>
 	<% end %>
 <% end %>
 

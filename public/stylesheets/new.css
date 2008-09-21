@@ -15,12 +15,9 @@ a { color: #458B74; }
 	margin:0;
 	background-color:none;
 	padding:2em 0em .1em 1em;
-	border-bottom:4px solid #C1CDC1;
-	
-	
-	
-	
+	border-bottom:1px solid #C1CDC1;
 }
+
 #header h1 a{
 	text-decoration: none;
 	color: #8B8970;
@@ -97,5 +94,9 @@ a { color: #458B74; }
 #footer p{
 	color:#FFFFFD;
 	
+}
+
+#user{
+	padding:0 4.5em;
 }
 

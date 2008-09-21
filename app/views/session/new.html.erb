@@ -1,7 +1,8 @@
 <!-- Hide the viewport in the main layout -->
 <script>$('viewport').style.display = 'none'</script>
-<div id ="form_at_user">
+<div id ="user">
 <h1>Login</h1>
+<p>Login to mark Videos.</p>
 <% form_tag session_path do -%>
 <p><label for="login">Login</label><br/>
 <%= text_field_tag 'login' %></p>
@@ -11,4 +12,6 @@
 
 <p><%= submit_tag 'Log in' %></p>
 <% end -%>
+
+<p>Need an account? <%= link_to 'Sign Up', signup_path %></p>
 </div>
