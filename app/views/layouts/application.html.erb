@@ -5,35 +5,43 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Videos: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'style' %>
+  <%= stylesheet_link_tag 'new' %>
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<div id ="doobylaka">
-	<%= link_to (image_tag '/images/beta.png', {:border => 0}), videos_path %>
+<div id ="header">
+	<div class="box"><h1><%= link_to "Tubemarks", videos_path %></h1>
+		<p>YouTube Bookmarks</p>
 		<% if logged_in? %>
-			<%=link_to  current_user.login, user_videos_path(current_user) %> | <%= link_to 'youtube.com', 'http://www.youtube.com/' %> | <%= link_to 'Logout', logout_path %>
-		<% else %>
-		    <%= link_to 'Sign Up', signup_path %> | <%= link_to 'Login', login_path %>
-		<% end %>
-</div>
-<div id="bookmark">
-  <p>Drag this bookmark to your toolbar and use it to mark videos.<br/>
-	<%= link_to (image_tag '/images/add_tubemark.png',  {:border => 0}), bookmarklet() %>
+				<%=link_to  current_user.login, user_videos_path(current_user) %> | <%= link_to 'youtube.com', 'http://www.youtube.com/' %> | <%= link_to 'Logout', logout_path %>
+			<% else %>
+			    <%= link_to 'Sign Up', signup_path %> | <%= link_to 'Login', login_path %>
+			<% end %>
+		</div>
+ 	<div class="box">
+		<%= render :partial => 'marks/new_mark_form', :object => 'video' %>
+	</div>
+<div class="box">
+	<h2>Convenient Bookmarking</h2>
+  <p>Drag
+	<%= link_to (image_tag '/images/add_tubemark.png',  {:border => 0}), bookmarklet() %> to your toolbar for one click tubemarking.
   </p>
 </div>
-<div id ="header">
-	<%= link_to (image_tag '/images/tubemarks_logo.png', {:border => 0}), videos_path %>
-	<%= render :partial => 'marks/new_mark_form', :object => 'video' %>
 </div>
+
 <div id = "flash_notice" onmousemove="new Effect.Fade(this, {duration: 2})" style="display: <%= flash[:notice] ? 'block' : 'none' %>">
 	  <%= flash[:notice] %>
 </div>
-<div id="wrapper">
+<div id="container">
+
+	
+	<%= yield  %>
 	<div id="viewport">
 		<%= yield :viewport %>
 	</div>
-	<%= yield  %>
-</div>
+	</div>
+	<div id="footer">
+		<p>Tubemarks is opensource. If you want to contribute it's hosted at GitHub.</p>
+	</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<p>&nbsp;Show:
+<div id = "filter"><p>&nbsp;Watch:
    <span class="filter"> 
 		<%= link_to_unless(session[:seen] == 'false', 'unseen', params.merge({'seen' => 'false'})) %>
    </span>
@@ -8,10 +8,10 @@
    <span class="filter">
 		<%= link_to_unless(%w(seen unseen).include?(session[:seen]), 'all', params.merge({'seen' => 'all'})) %> 
    </span>
-	<span class="space">Marked by: 
+	<span class="space">and marked by: 
 	</span>
 	<span class="filter">
-		<%= link_to_unless(session[:marked_by] == 'all', 'all',  params.merge({'marked_by' => 'all'})) %> 
+		<%= link_to_unless(session[:marked_by] == 'all', 'everyone',  params.merge({'marked_by' => 'all'})) %> 
 	</span>
 <% if logged_in? %>
 	<span class="filter">
@@ -22,3 +22,4 @@
 <% if not %w(all you).include?(session[:marked_by])  %>
      <%= display_name(session[:marked_by]).titleize.pluralize %> Tubemarks
 <% end %>
+</div>
