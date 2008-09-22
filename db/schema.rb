@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20080620130031) do
     t.integer  "user_id",        :limit => 11
     t.integer  "adder",          :limit => 11
     t.boolean  "private",                      :default => false
-
   end
 
   create_table "views", :force => true do |t|
