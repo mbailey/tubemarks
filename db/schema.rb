@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of ActiveRecord to incrementally modify your database, and
+# please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
 # Note that this schema.rb definition is the authoritative source for your database schema. If you need
@@ -12,10 +12,10 @@
 ActiveRecord::Schema.define(:version => 9) do
 
   create_table "marks", :force => true do |t|
-    t.integer  "video_id"
-    t.integer  "user_id"
-    t.integer  "rating"
-    t.integer  "category"
+    t.integer  "video_id",    :limit => 11
+    t.integer  "user_id",     :limit => 11
+    t.integer  "rating",      :limit => 11
+    t.integer  "category",    :limit => 11
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(:version => 9) do
     t.datetime "updated_at"
     t.string   "title"
     t.string   "thumbnail_url"
-    t.integer  "length_seconds"
-    t.integer  "user_id"
-    t.integer  "adder"
-    t.boolean  "private"
+    t.integer  "length_seconds", :limit => 11
+    t.integer  "user_id",        :limit => 11
+    t.integer  "adder",          :limit => 11
+    t.boolean  "private",                      :default => false
   end
 
   create_table "views", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "video_id"
+    t.integer  "user_id",    :limit => 11
+    t.integer  "video_id",   :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,4 @@
-require 'deprec'
+# require 'deprec'
 
 # # uses capistrano-ext gem to load stage specific 
 # # config from deploy/staging.rb and deploy/production.rb
