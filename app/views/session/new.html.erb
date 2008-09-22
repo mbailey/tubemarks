@@ -14,4 +14,5 @@
 <% end -%>
 
 <p>Need an account? <%= link_to 'Sign Up', signup_path %></p>
+<p><%= link_to "I've forgotten my password", {:controller => "users", :action => 'email_reset_code'} -%></p>
 </div>

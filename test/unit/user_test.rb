@@ -46,6 +46,30 @@ class UserTest < Test::Unit::TestCase
     assert_equal users(:quentin), User.authenticate('quentin', 'new password')
   end
 
+  def test_should_reset_password_through_link
+    user = create_user :forgotten_password_link => 'test'
+    user.forgotten_password_link = 'test'
+    user.save!
+    resulting_user = User.reset_password_through_link("test","test","test")
+    assert_equal user, User.authenticate('quire', 'test')
+  end
+
+  def test_should_not_reset_password_for_duff_link
+    assert_equal nil, User.reset_password_through_link('non-existant_link','test','test')
+  end
+
+  def test_should_raise_an_error_for_a_duplicate_link
+    user1 = create_user :login => "duff_one", :email => "duff@one.com"
+    user2 = create_user :login => "duff_two", :email => "duff@two.com"
+    user1.forgotten_password_link = 'duplicate'
+    user2.forgotten_password_link = 'duplicate'
+    user1.save!
+    user2.save!
+    assert_raise RuntimeError do
+      User.reset_password_through_link('duplicate','test','test')
+    end
+  end
+
   def test_should_not_rehash_password
     users(:quentin).update_attributes(:login => 'quentin2')
     assert_equal users(:quentin), User.authenticate('quentin2', 'test')
@@ -92,6 +116,16 @@ class UserTest < Test::Unit::TestCase
     assert_not_nil users(:quentin).remember_token
     assert_not_nil users(:quentin).remember_token_expires_at
     assert users(:quentin).remember_token_expires_at.between?(before, after)
+  end
+
+  def test_should_generate_forgotten_password_link
+    assert User.generate_forgotten_password_link(users(:quentin).email)
+    resulting_user = User.find(users(:quentin).id)
+    assert_not_nil resulting_user.forgotten_password_link
+  end
+
+  def test_should_not_generate_forgotten_password_link_for_invlaid_email
+    assert_equal nil, User.generate_forgotten_password_link("non_existant_email")
   end
 
 protected

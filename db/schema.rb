@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 20080620130031) do
 
   create_table "marks", :force => true do |t|
     t.integer  "video_id",    :limit => 11
@@ -30,7 +30,11 @@ ActiveRecord::Schema.define(:version => 9) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+    t.string   "forgotten_password_link"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["forgotten_password_link"], :name => "index_users_on_forgotten_password_link"
 
   create_table "videos", :force => true do |t|
     t.string   "v"
@@ -42,6 +46,7 @@ ActiveRecord::Schema.define(:version => 9) do
     t.integer  "user_id",        :limit => 11
     t.integer  "adder",          :limit => 11
     t.boolean  "private",                      :default => false
+
   end
 
   create_table "views", :force => true do |t|

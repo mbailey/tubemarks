@@ -13,6 +13,7 @@ Thursday 24 April
 * signup
 * login
 * password recovery
+Rob - need to un-screw routes to support this, particularly for put operation.
 * bookmarks saved against user
 * tubemarks unique for user
 
