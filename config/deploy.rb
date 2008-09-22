@@ -7,7 +7,7 @@
 
 set :domain, "tubemarks.deprecated.org"
 set :application, "tubemarks"
-set :repository,  "svn+ssh://scm.deprecated.org/var/www/apps/tubemarks/repos"
+set :repository,  "git://github.com/mbailey/tubemarks.git"
 set :gems_for_project, %w(has_finder will_paginate youtube mysql sqlite3-ruby) # list of gems to be installed
 
 set :mongrel_port, 8010
@@ -26,7 +26,7 @@ role :db,  domain, :primary => true
 
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
-# set :scm, :subversion
+set :scm, :git
 
 
 after :deploy do
