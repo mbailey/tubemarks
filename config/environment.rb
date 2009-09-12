@@ -14,6 +14,8 @@ Rails::Initializer.run do |config|
 
   config.gem 'ruby-debug'
   config.gem 'youtube'
+  config.gem 'will_paginate'
+  config.gem 'has_finder'
 
 
   # Your secret key for verifying cookie session data integrity.
@@ -41,7 +43,3 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
 end
-require 'will_paginate'
-require 'youtube'
-gem 'has_finder'
-require 'has_finder'
