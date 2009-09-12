@@ -1,4 +1,4 @@
-# require 'deprec'
+require 'deprec'
   
 set :application, "tubemarks"
 set :domain, "www.tubemarks.com"
@@ -22,9 +22,9 @@ set :gems_for_project, %w(has_finder will_paginate youtube mysql sqlite3-ruby) #
 # role :web, domain
 # role :db,  domain, :primary => true
 
-role :app, '192.168.0.169'
-role :web, '192.168.0.169'
-role :db,  '192.168.0.169', :primary => true
+role :app, 'hh.failmode.com'
+role :web, 'hh.failmode.com'
+role :db,  'db.failmode.com', :primary => true, :no_release => true
 
 namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
@@ -32,7 +32,7 @@ namespace :deploy do
   end
 end
 
-after :deploy do
-  run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/productio
-n.sqlite3"
-end
+# after :deploy do
+#   run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/productio
+# n.sqlite3"
+# end

@@ -12,10 +12,10 @@
 ActiveRecord::Schema.define(:version => 20080620130031) do
 
   create_table "marks", :force => true do |t|
-    t.integer  "video_id",    :limit => 11
-    t.integer  "user_id",     :limit => 11
-    t.integer  "rating",      :limit => 11
-    t.integer  "category",    :limit => 11
+    t.integer  "video_id"
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.integer  "category"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20080620130031) do
     t.string   "forgotten_password_link"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["forgotten_password_link"], :name => "index_users_on_forgotten_password_link"
+  add_index "users", ["email"], :name => "index_users_on_email"
 
   create_table "videos", :force => true do |t|
     t.string   "v"
@@ -42,15 +42,15 @@ ActiveRecord::Schema.define(:version => 20080620130031) do
     t.datetime "updated_at"
     t.string   "title"
     t.string   "thumbnail_url"
-    t.integer  "length_seconds", :limit => 11
-    t.integer  "user_id",        :limit => 11
-    t.integer  "adder",          :limit => 11
-    t.boolean  "private",                      :default => false
+    t.integer  "length_seconds"
+    t.integer  "user_id"
+    t.integer  "adder"
+    t.boolean  "private",        :default => false
   end
 
   create_table "views", :force => true do |t|
-    t.integer  "user_id",    :limit => 11
-    t.integer  "video_id",   :limit => 11
+    t.integer  "user_id"
+    t.integer  "video_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
